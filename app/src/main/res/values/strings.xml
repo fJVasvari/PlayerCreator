@@ -4,4 +4,8 @@
     <string name="name_string">Name</string>
     <string name="class_string">Class</string>
     <string name="gender_string">Gender</string>
+    <string name="create_string">Create</string>
+    <string name="update_string">Update</string>
+    <string name="delete_string">Delete</string>
+    <string name="refresh_string">Refresh</string>
 </resources>
