@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">PlayerCreator</string>
+    <string name="players_list_string">Players</string>
+    <string name="name_string">Name</string>
+    <string name="class_string">Class</string>
+    <string name="gender_string">Gender</string>
 </resources>
