@@ -1,8 +1,12 @@
 package com.example.playercreator;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -26,8 +30,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         getPlayersFromDB();
-
-
 
         playersSpinner = findViewById(R.id.playerSpinner);
         playerClassSpinner = findViewById(R.id.classSpinner);
@@ -55,9 +57,47 @@ public class MainActivity extends AppCompatActivity {
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Player player = new Player(nameText.getText().toString(),playerClassSpinner.getSelectedItem().toString(),playerGenderSpinner.getSelectedItem().toString());
+                /*Player player = new Player(nameText.getText().toString(),playerClassSpinner.getSelectedItem().toString(),playerGenderSpinner.getSelectedItem().toString());
                 dataBase.playerUpload(player);
-                Toast.makeText(getApplicationContext(),"szöveg",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(),"szöveg",Toast.LENGTH_SHORT).show();*/
+                String playerName = nameText.getText().toString();
+                String playerClass = playerClassSpinner.getSelectedItem().toString();
+                String playerGender = playerGenderSpinner.getSelectedItem().toString();
+
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        String[] field = new String[6];
+                        field[0] = "Name";
+                        field[1] = "Class";
+                        field[2] = "Gender";
+                        field[3] = "Health";
+                        field[4] = "Damage";
+                        field[5] = "Defense";
+                        //
+                        String[] data = new String[6];
+                        data[0] = playerName;
+                        data[1] = playerClass;
+                        data[2] = playerGender;
+                        data[3] = "0";
+                        data[4] = "0";
+                        data[5] = "0";
+                        //ITT ÁT KELL ÍRNI AZ IPCÍMET
+                        PutData putData = new PutData("http://10.0.2.2/playercreator/createPlayer.php","POST",field,data);
+                        if(putData.startPut()){
+                            if(putData.onComplete()){
+                                String result = putData.getResult();
+                                if(result.equals("Player created")){
+                                    Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                                }
+                                Log.i("PutData",result);
+                            }
+                        }
+                    }
+                });
             }
         });
 
