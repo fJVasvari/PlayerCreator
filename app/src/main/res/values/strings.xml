@@ -8,4 +8,9 @@
     <string name="update_string">Update</string>
     <string name="delete_string">Delete</string>
     <string name="refresh_string">Refresh</string>
+    <string name="player_creator_login">Player Creator Login</string>
+    <string name="register">Register</string>
+    <string name="username">Username</string>
+    <string name="password">Password</string>
+    <string name="login">Login</string>
 </resources>
