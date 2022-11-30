@@ -16,11 +16,12 @@ public class Register extends AppCompatActivity {
     TextView loginText;
     EditText fullnameEditText, emailEditText, usernameEditText, passwordEditText;
     Button registerButton;
+    RegisterUser registerUser;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
-
+        registerUser = new RegisterUser();
         loginText = findViewById(R.id.loginTextView);
 
         fullnameEditText = findViewById(R.id.fullnameEditText);
@@ -37,6 +38,7 @@ public class Register extends AppCompatActivity {
                         ,String.valueOf(emailEditText.getText())
                         ,String.valueOf(usernameEditText.getText())
                         ,String.valueOf(passwordEditText.getText()));
+                registerUser.putDataToDB(user);
             }
         });
 

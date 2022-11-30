@@ -3,7 +3,6 @@ package com.example.playercreator;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
-import android.widget.Toast;
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
@@ -34,7 +33,7 @@ public class RegisterUser {
                             if(result.equals("Sign Up Succes")){
                                 //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
                             }else{
-                                //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                                //
                             }
                             Log.i("PutData",result);
                         }
