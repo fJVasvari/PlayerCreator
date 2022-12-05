@@ -16,4 +16,9 @@
     <string name="player_creator_register">Player Creator Register</string>
     <string name="full_name">Full name</string>
     <string name="email">email</string>
+    <string name="health">Health</string>
+    <string name="damage">Damage</string>
+    <string name="defense">Defense</string>
+    <string name="minusButton">-</string>
+    <string name="plusButton">+</string>
 </resources>

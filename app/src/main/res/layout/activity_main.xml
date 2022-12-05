@@ -52,7 +52,7 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView3"
-        app:layout_constraintVertical_bias="0.101" />
+        app:layout_constraintVertical_bias="0.100" />
 
     <Spinner
         android:id="@+id/playerSpinner"
@@ -155,4 +155,108 @@
         app:layout_constraintStart_toEndOf="@+id/delete_btn"
         app:layout_constraintTop_toBottomOf="@+id/update_btn"
         app:layout_constraintVertical_bias="0.341" />
+
+    <Button
+        android:id="@+id/healthMinus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="@string/minusButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.080"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.100"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <Button
+        android:id="@+id/damageMinus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="@string/minusButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.080"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.100"
+        app:layout_constraintTop_toBottomOf="@+id/healthMinus" />
+
+    <Button
+        android:id="@+id/defenseMinus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="@string/minusButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.080"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintVertical_bias="0.100"
+        app:layout_constraintTop_toBottomOf="@+id/damageMinus" />
+
+    <Button
+        android:id="@+id/healthPlus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="@string/plusButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.100"
+        tools:ignore="DuplicateSpeakableTextCheck" />
+    <Button
+        android:id="@+id/damagePlus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="@string/plusButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/healthPlus"
+        app:layout_constraintVertical_bias="0.100" />
+    <Button
+        android:id="@+id/defensePlus"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:text="@string/plusButton"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.9"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/damagePlus"
+        app:layout_constraintVertical_bias="0.100" />
+
+    <TextView
+        android:id="@+id/textviewHealth"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/health"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/healthPlus"
+        app:layout_constraintStart_toEndOf="@+id/healthMinus"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:layout_constraintVertical_bias="0.120" />
+    <TextView
+        android:id="@+id/textviewDamage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/damage"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/damagePlus"
+        app:layout_constraintStart_toEndOf="@+id/damageMinus"
+        app:layout_constraintTop_toBottomOf="@+id/textviewHealth"
+        app:layout_constraintVertical_bias="0.200" />
+    <TextView
+        android:id="@+id/textviewDefense"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/defense"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/defensePlus"
+        app:layout_constraintStart_toEndOf="@+id/defenseMinus"
+        app:layout_constraintTop_toBottomOf="@+id/textviewDamage"
+        app:layout_constraintVertical_bias="0.200" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

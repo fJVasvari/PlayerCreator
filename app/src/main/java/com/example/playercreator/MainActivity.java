@@ -12,6 +12,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
@@ -20,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     Spinner playersSpinner, playerClassSpinner, playerGenderSpinner;
     Button createBtn, updateBtn, deleteBtn, refreshBtn;
+    TextView textviewHealth,textviewDamage,textviewDefense;
 
     EditText nameText;
 
@@ -42,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
         deleteBtn = findViewById(R.id.delete_btn);
         refreshBtn = findViewById(R.id.refresh_btn);
 
+        textviewHealth = findViewById(R.id.textviewHealth);
+        textviewDamage = findViewById(R.id.textviewDamage);
+        textviewDefense = findViewById(R.id.textviewDefense);
+
         String[] pClasses = new String[]{"Barbarian","Mage"};
         final ArrayAdapter<String> pClassAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pClasses);
         playerClassSpinner.setAdapter(pClassAdapter);
@@ -53,6 +59,12 @@ public class MainActivity extends AppCompatActivity {
         String[] pNames = new String[]{"pista"};
         final ArrayAdapter<String> playerNameAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pNames);
         playersSpinner.setAdapter(playerNameAdapter);
+
+        //IDEIGLENES
+
+        textviewHealth.setText("1");
+        textviewDamage.setText("1");
+        textviewDefense.setText("1");
 
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
