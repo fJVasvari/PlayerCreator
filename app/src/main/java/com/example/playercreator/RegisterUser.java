@@ -1,14 +1,17 @@
 package com.example.playercreator;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class RegisterUser {
 
-    protected void putDataToDB(User user){
+    protected void putDataToDB(User user, Context context){
         if(!user.getFullname().equals("") &&!user.getEmail().equals("") &&!user.getUsername().equals("") &&!user.getPassword().equals("")){
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable() {
@@ -31,7 +34,10 @@ public class RegisterUser {
                         if(putData.onComplete()){
                             String result = putData.getResult();
                             if(result.equals("Sign Up Succes")){
-                                //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                                Toast.makeText(context,result,Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(context, Login.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(intent);
                             }else{
                                 //
                             }

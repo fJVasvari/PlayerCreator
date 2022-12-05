@@ -38,7 +38,7 @@ public class Register extends AppCompatActivity {
                         ,String.valueOf(emailEditText.getText())
                         ,String.valueOf(usernameEditText.getText())
                         ,String.valueOf(passwordEditText.getText()));
-                registerUser.putDataToDB(user);
+                registerUser.putDataToDB(user,getApplicationContext());
             }
         });
 
