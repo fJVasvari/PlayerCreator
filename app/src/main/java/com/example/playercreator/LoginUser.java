@@ -1,13 +1,16 @@
 package com.example.playercreator;
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
+import android.widget.Toast;
 
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class LoginUser {
-    protected void login(User user){
+    protected void login(User user, Context context){
         if (!user.getUsername().equals("") && !user.getPassword().equals("")) {
             Handler handler = new Handler(Looper.getMainLooper());
             handler.post(new Runnable() {
@@ -22,8 +25,11 @@ public class LoginUser {
                     if (putData.startPut()) {
                         if (putData.onComplete()) {
                             String result = putData.getResult();
-                            if (result.equals("Login Succes")) {
-                                //Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                            if (result.equals("Login Success")) {
+                                Toast.makeText(context,result,Toast.LENGTH_SHORT).show();
+                                Intent intent = new Intent(context, MainActivity.class);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+                                context.startActivity(intent);
                             } else {
                                 //
                             }
