@@ -146,28 +146,48 @@ public class MainActivity extends AppCompatActivity {
         damagePlusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //statPointManager.statPointPlus(statPoint,playerDamage,textviewDamage,textviewStatPoints);
+                if(statPoint>0){
+                    playerDamage++;
+                    statPoint--;
+                    textviewDamage.setText(String.valueOf(playerDamage));
+                    textviewStatPoints.setText(String.valueOf(statPoint));
+                }
             }
         });
 
         damageMinusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(playerDamage >1){
+                    playerDamage--;
+                    statPoint++;
+                    textviewDamage.setText(String.valueOf(playerDamage));
+                    textviewStatPoints.setText(String.valueOf(statPoint));
+                }
             }
         });
 
         defensePlusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(statPoint>0){
+                    playerDefense++;
+                    statPoint--;
+                    textviewDefense.setText(String.valueOf(playerDefense));
+                    textviewStatPoints.setText(String.valueOf(statPoint));
+                }
             }
         });
 
         defenseMinusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                if(playerDefense >1){
+                    playerDefense--;
+                    statPoint++;
+                    textviewDefense.setText(String.valueOf(playerDefense));
+                    textviewStatPoints.setText(String.valueOf(statPoint));
+                }
             }
         });
 
