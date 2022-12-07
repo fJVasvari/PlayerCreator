@@ -259,4 +259,25 @@
         app:layout_constraintTop_toBottomOf="@+id/textviewDamage"
         app:layout_constraintVertical_bias="0.200" />
 
+    <TextView
+        android:id="@+id/textviewStatPoint"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/statPoint"
+        app:layout_constraintBottom_toTopOf="@+id/update_btn"
+        app:layout_constraintEnd_toStartOf="@+id/defensePlus"
+        app:layout_constraintStart_toEndOf="@+id/defenseMinus"
+        app:layout_constraintTop_toBottomOf="@+id/textviewDefense" />
+
+    <TextView
+        android:id="@+id/textviewStatPointText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/statPointText"
+        app:layout_constraintBottom_toTopOf="@+id/create_btn"
+        app:layout_constraintEnd_toStartOf="@+id/defensePlus"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/defenseMinus"
+        app:layout_constraintTop_toBottomOf="@+id/defenseMinus" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -21,4 +21,6 @@
     <string name="defense">Defense</string>
     <string name="minusButton">-</string>
     <string name="plusButton">+</string>
+    <string name="statPoint">stat</string>
+    <string name="statPointText">Stat points:</string>
 </resources>

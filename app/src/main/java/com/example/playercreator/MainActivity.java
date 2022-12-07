@@ -21,12 +21,24 @@ public class MainActivity extends AppCompatActivity {
 
     Spinner playersSpinner, playerClassSpinner, playerGenderSpinner;
     Button createBtn, updateBtn, deleteBtn, refreshBtn;
-    TextView textviewHealth,textviewDamage,textviewDefense;
+    TextView textviewHealth,textviewDamage,textviewDefense, textviewStatPoints;
 
     EditText nameText;
 
     DataBase dataBase = new DataBase();
     ArrayList<Player> playerList;
+
+    int statPoint = 10;
+    int playerHealth = 1;
+    int playerDamage = 1;
+    int playerDefense = 1;
+
+    Button healthPlusBtn, healthMinusBtn, damagePlusBtn, damageMinusBtn, defensePlusBtn, defenseMinusBtn;
+
+    StatPointManager statPointManager = new StatPointManager();
+
+    CreatePlayer createPlayer = new CreatePlayer();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,6 +59,14 @@ public class MainActivity extends AppCompatActivity {
         textviewHealth = findViewById(R.id.textviewHealth);
         textviewDamage = findViewById(R.id.textviewDamage);
         textviewDefense = findViewById(R.id.textviewDefense);
+        textviewStatPoints = findViewById(R.id.textviewStatPoint);
+
+        healthPlusBtn = findViewById(R.id.healthPlus);
+        healthMinusBtn = findViewById(R.id.healthMinus);
+        damagePlusBtn = findViewById(R.id.damagePlus);
+        damageMinusBtn = findViewById(R.id.damageMinus);
+        defensePlusBtn = findViewById(R.id.defensePlus);
+        defenseMinusBtn = findViewById(R.id.defenseMinus);
 
         String[] pClasses = new String[]{"Barbarian","Mage"};
         final ArrayAdapter<String> pClassAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pClasses);
@@ -62,54 +82,19 @@ public class MainActivity extends AppCompatActivity {
 
         //IDEIGLENES
 
-        textviewHealth.setText("1");
-        textviewDamage.setText("1");
-        textviewDefense.setText("1");
+        textviewHealth.setText(String.valueOf(playerHealth));
+        textviewDamage.setText(String.valueOf(playerDamage));
+        textviewDefense.setText(String.valueOf(playerDefense));
+        textviewStatPoints.setText(String.valueOf(statPoint));
 
         createBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*Player player = new Player(nameText.getText().toString(),playerClassSpinner.getSelectedItem().toString(),playerGenderSpinner.getSelectedItem().toString());
-                dataBase.playerUpload(player);
-                Toast.makeText(getApplicationContext(),"szöveg",Toast.LENGTH_SHORT).show();*/
-                String playerName = nameText.getText().toString();
-                String playerClass = playerClassSpinner.getSelectedItem().toString();
-                String playerGender = playerGenderSpinner.getSelectedItem().toString();
-
-                Handler handler = new Handler(Looper.getMainLooper());
-                handler.post(new Runnable() {
-                    @Override
-                    public void run() {
-                        String[] field = new String[6];
-                        field[0] = "Name";
-                        field[1] = "Class";
-                        field[2] = "Gender";
-                        field[3] = "Health";
-                        field[4] = "Damage";
-                        field[5] = "Defense";
-                        //
-                        String[] data = new String[6];
-                        data[0] = playerName;
-                        data[1] = playerClass;
-                        data[2] = playerGender;
-                        data[3] = "0";
-                        data[4] = "0";
-                        data[5] = "0";
-                        //ITT ÁT KELL ÍRNI AZ IPCÍMET
-                        PutData putData = new PutData("http://10.0.2.2/playercreator/createPlayer.php","POST",field,data);
-                        if(putData.startPut()){
-                            if(putData.onComplete()){
-                                String result = putData.getResult();
-                                if(result.equals("Player created")){
-                                    Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
-                                }else{
-                                    Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
-                                }
-                                Log.i("PutData",result);
-                            }
-                        }
-                    }
-                });
+                Player player = new Player(nameText.getText().toString(),playerClassSpinner.getSelectedItem().toString(),playerGenderSpinner.getSelectedItem().toString());
+                player.setPlayerHealth(playerHealth);
+                player.setPlayerDamage(playerDamage);
+                player.setPlayerDefense(playerDefense);
+                createPlayer.putPlayerToDB(player,getApplicationContext());
             }
         });
 
@@ -133,6 +118,60 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+
+        healthPlusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(statPoint>0){
+                    playerHealth++;
+                    statPoint--;
+                    textviewHealth.setText(String.valueOf(playerHealth));
+                    textviewStatPoints.setText(String.valueOf(statPoint));
+                }
+            }
+        });
+
+        healthMinusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(playerHealth >1){
+                    playerHealth--;
+                    statPoint++;
+                    textviewHealth.setText(String.valueOf(playerHealth));
+                    textviewStatPoints.setText(String.valueOf(statPoint));
+                }
+            }
+        });
+
+        damagePlusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //statPointManager.statPointPlus(statPoint,playerDamage,textviewDamage,textviewStatPoints);
+            }
+        });
+
+        damageMinusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        defensePlusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+        defenseMinusBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });
+
+
     }
     private void getPlayersFromDB(){
         playerList = dataBase.getAllPlayer();
