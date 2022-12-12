@@ -16,6 +16,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -25,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
 
     EditText nameText;
 
-    DataBase dataBase = new DataBase();
-    ArrayList<Player> playerList;
+    ArrayList<Player> playerList = new ArrayList<>();
+    ArrayList<String> playerNameList = new ArrayList<>();
 
     int statPoint = 10;
     int playerHealth = 1;
@@ -35,15 +36,12 @@ public class MainActivity extends AppCompatActivity {
 
     Button healthPlusBtn, healthMinusBtn, damagePlusBtn, damageMinusBtn, defensePlusBtn, defenseMinusBtn;
 
-    StatPointManager statPointManager = new StatPointManager();
-
     CreatePlayer createPlayer = new CreatePlayer();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        getPlayersFromDB();
 
         playersSpinner = findViewById(R.id.playerSpinner);
         playerClassSpinner = findViewById(R.id.classSpinner);
@@ -68,6 +66,8 @@ public class MainActivity extends AppCompatActivity {
         defensePlusBtn = findViewById(R.id.defensePlus);
         defenseMinusBtn = findViewById(R.id.defenseMinus);
 
+        StatPointManager statPointManager = new StatPointManager(textviewStatPoints,statPoint);
+
         String[] pClasses = new String[]{"Barbarian","Mage"};
         final ArrayAdapter<String> pClassAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pClasses);
         playerClassSpinner.setAdapter(pClassAdapter);
@@ -76,8 +76,7 @@ public class MainActivity extends AppCompatActivity {
         final ArrayAdapter<String> pGenderAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pGenders);
         playerGenderSpinner.setAdapter(pGenderAdapter);
 
-        String[] pNames = new String[]{"pista"};
-        final ArrayAdapter<String> playerNameAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pNames);
+        ArrayAdapter<String> playerNameAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, playerNameList);
         playersSpinner.setAdapter(playerNameAdapter);
 
         //IDEIGLENES
@@ -94,6 +93,9 @@ public class MainActivity extends AppCompatActivity {
                 player.setPlayerHealth(playerHealth);
                 player.setPlayerDamage(playerDamage);
                 player.setPlayerDefense(playerDefense);
+                playerList.add(player);
+                playerListToNameList();
+                playersSpinner.setAdapter(playerNameAdapter);
                 createPlayer.putPlayerToDB(player,getApplicationContext());
             }
         });
@@ -122,78 +124,49 @@ public class MainActivity extends AppCompatActivity {
         healthPlusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(statPoint>0){
-                    playerHealth++;
-                    statPoint--;
-                    textviewHealth.setText(String.valueOf(playerHealth));
-                    textviewStatPoints.setText(String.valueOf(statPoint));
-                }
+                playerHealth = statPointManager.statPointPlus(playerHealth,textviewHealth);
             }
         });
 
         healthMinusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(playerHealth >1){
-                    playerHealth--;
-                    statPoint++;
-                    textviewHealth.setText(String.valueOf(playerHealth));
-                    textviewStatPoints.setText(String.valueOf(statPoint));
-                }
+                playerHealth = statPointManager.statPointMinus(playerHealth,textviewHealth);
             }
         });
 
         damagePlusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(statPoint>0){
-                    playerDamage++;
-                    statPoint--;
-                    textviewDamage.setText(String.valueOf(playerDamage));
-                    textviewStatPoints.setText(String.valueOf(statPoint));
-                }
+                playerDamage = statPointManager.statPointPlus(playerDamage,textviewDamage);
             }
         });
 
         damageMinusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(playerDamage >1){
-                    playerDamage--;
-                    statPoint++;
-                    textviewDamage.setText(String.valueOf(playerDamage));
-                    textviewStatPoints.setText(String.valueOf(statPoint));
-                }
+                playerDamage = statPointManager.statPointMinus(playerDamage,textviewDamage);
             }
         });
 
         defensePlusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(statPoint>0){
-                    playerDefense++;
-                    statPoint--;
-                    textviewDefense.setText(String.valueOf(playerDefense));
-                    textviewStatPoints.setText(String.valueOf(statPoint));
-                }
+                playerDefense = statPointManager.statPointPlus(playerDefense,textviewDefense);
             }
         });
 
         defenseMinusBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(playerDefense >1){
-                    playerDefense--;
-                    statPoint++;
-                    textviewDefense.setText(String.valueOf(playerDefense));
-                    textviewStatPoints.setText(String.valueOf(statPoint));
-                }
+                playerDefense = statPointManager.statPointMinus(playerDefense,textviewDefense);
             }
         });
-
-
     }
-    private void getPlayersFromDB(){
-        playerList = dataBase.getAllPlayer();
+    private void playerListToNameList(){
+        playerNameList.clear();
+        for (int i = 0; i < playerList.size(); i++) {
+            playerNameList.add(playerList.get(i).getPlayerName());
+        }
     }
 }
