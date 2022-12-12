@@ -8,6 +8,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
@@ -67,7 +68,9 @@ public class MainActivity extends AppCompatActivity {
         defenseMinusBtn = findViewById(R.id.defenseMinus);
 
         StatPointManager statPointManager = new StatPointManager(textviewStatPoints,statPoint);
-
+        Player player = new Player("Default","Default","Default");
+        playerList.add(player);
+        playerListToNameList();
         String[] pClasses = new String[]{"Barbarian","Mage"};
         final ArrayAdapter<String> pClassAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pClasses);
         playerClassSpinner.setAdapter(pClassAdapter);
@@ -160,6 +163,46 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 playerDefense = statPointManager.statPointMinus(playerDefense,textviewDefense);
+            }
+        });
+
+        playersSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                /*String spinnerValue = playersSpinner.getSelectedItem().toString();
+                if (spinnerValue.equals("Name")) {
+                    for (int i = 0; i < playerList.size(); i++) {
+                        if (playerList.get(i).getPlayerName().equals(spinnerValue)) {
+                            textviewHealth.setText(playerList.get(i).getPlayerHealth());
+                            textviewDamage.setText(playerList.get(i).getPlayerHealth());
+                            textviewDefense.setText(playerList.get(i).getPlayerHealth());
+                            textviewStatPoints.setText(playerList.get(i).getPlayerHealth());
+                        }
+                    }
+                } else if (spinnerValue.equals("Name1")) {
+                    for (int i = 0; i < playerList.size(); i++) {
+                        if (playerList.get(i).getPlayerName().equals(spinnerValue)) {
+                            textviewHealth.setText(playerList.get(i).getPlayerHealth());
+                            textviewDamage.setText(playerList.get(i).getPlayerHealth());
+                            textviewDefense.setText(playerList.get(i).getPlayerHealth());
+                            textviewStatPoints.setText(playerList.get(i).getPlayerHealth());
+                        }
+                    }
+                } else {
+                    for (int i = 0; i < playerList.size(); i++) {
+                        if (playerList.get(i).getPlayerName().equals(spinnerValue)) {
+                            textviewHealth.setText("0");
+                            textviewDamage.setText("0");
+                            textviewDefense.setText("0");
+                            textviewStatPoints.setText("0");
+                        }
+                    }
+                }*/
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {
+
             }
         });
     }
