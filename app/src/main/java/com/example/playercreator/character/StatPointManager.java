@@ -1,4 +1,4 @@
-package com.example.playercreator;
+package com.example.playercreator.character;
 
 import android.widget.TextView;
 

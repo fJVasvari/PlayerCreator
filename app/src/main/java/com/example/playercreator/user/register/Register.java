@@ -1,4 +1,4 @@
-package com.example.playercreator;
+package com.example.playercreator.user.register;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,7 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import com.google.android.material.textfield.TextInputEditText;
+import com.example.playercreator.R;
+import com.example.playercreator.user.User;
+import com.example.playercreator.user.login.Login;
 
 public class Register extends AppCompatActivity {
 

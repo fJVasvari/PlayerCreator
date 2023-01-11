@@ -1,6 +1,7 @@
-package com.example.playercreator;
+package com.example.playercreator.character;
 
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.playercreator.R;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 import android.os.AsyncTask;
@@ -26,7 +27,6 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -123,7 +123,30 @@ public class MainActivity extends AppCompatActivity {
         deleteBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                Handler handler = new Handler(Looper.getMainLooper());
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        String[] field = new String[1];
+                        field[0] = "ID";
+                        //
+                        String[] data = new String[1];
+                        data[0] = "2";
+                        //ITT ÁT KELL ÍRNI AZ IPCÍMET
+                        PutData putData = new PutData("http://10.0.2.2/playercreator/deletePlayer.php","POST",field,data);
+                        if(putData.startPut()){
+                            if(putData.onComplete()){
+                                String result = putData.getResult();
+                                if(result.equals("Player deleted")){
+                                    Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                                }else{
+                                    Toast.makeText(getApplicationContext(),result,Toast.LENGTH_SHORT).show();
+                                }
+                                Log.i("PutData",result);
+                            }
+                        }
+                    }
+                });
             }
         });
 

@@ -1,4 +1,4 @@
-package com.example.playercreator;
+package com.example.playercreator.user.login;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.playercreator.character.MainActivity;
+import com.example.playercreator.user.User;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
 public class LoginUser {

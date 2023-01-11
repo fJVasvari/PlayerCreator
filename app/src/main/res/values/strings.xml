@@ -23,4 +23,11 @@
     <string name="plusButton">+</string>
     <string name="statPoint">stat</string>
     <string name="statPointText">Stat points:</string>
+    <string name="play">Play</string>
+    <string name="characters">Characters</string>
+    <string name="create_character">Create character</string>
+    <string name="XP">XP</string>
+    <string name="placeholder">placeholder</string>
+
+
 </resources>
