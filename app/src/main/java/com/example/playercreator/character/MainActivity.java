@@ -77,9 +77,11 @@ public class MainActivity extends AppCompatActivity {
         defenseMinusBtn = findViewById(R.id.defenseMinus);
 
         StatPointManager statPointManager = new StatPointManager(textviewStatPoints,statPoint);
+
         Player player = new Player("Default","Default","Default");
         playerList.add(player);
         playerListToNameList();
+
         String[] pClasses = new String[]{"Barbarian","Mage"};
         final ArrayAdapter<String> pClassAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, pClasses);
         playerClassSpinner.setAdapter(pClassAdapter);
