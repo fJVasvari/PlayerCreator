@@ -42,11 +42,10 @@ public class Characters extends AppCompatActivity {
         damageText = findViewById(R.id.damageText);
         defenseText = findViewById(R.id.defenseText);
 
-        getDataFromDB.getJSON("http://10.0.14.100/playercreator/getdata.php");
-        getDataFromDB.playerListToNameList();
-
         Player player = new Player("Default","Default","Default");
         playerList.add(player);
+        getDataFromDB.getJSON("http://10.0.14.100/playercreator/getdata.php");
+        getDataFromDB.playerListToNameList();
 
         ArrayAdapter<String> playerNameAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, playerNameList);
         characterSpinner.setAdapter(playerNameAdapter);

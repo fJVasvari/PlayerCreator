@@ -18,8 +18,8 @@ public class GetDataFromDB {
     ArrayList<Player> playerList;
     ArrayList<String> nameList;
     public GetDataFromDB(ArrayList<Player> playerList, ArrayList<String> nameList){
-        playerList = this.playerList;
-        nameList = this.nameList;
+        this.playerList = playerList;
+        this.nameList = nameList;
     }
 
     protected void getJSON(final String urlWebService) {
