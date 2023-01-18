@@ -7,7 +7,7 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
-import com.example.playercreator.character.MainActivity;
+import com.example.playercreator.Main.MainMenu;
 import com.example.playercreator.user.User;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
@@ -29,7 +29,7 @@ public class LoginUser {
                             String result = putData.getResult();
                             if (result.equals("Login Success")) {
                                 Toast.makeText(context,result,Toast.LENGTH_SHORT).show();
-                                Intent intent = new Intent(context, MainActivity.class);
+                                Intent intent = new Intent(context, MainMenu.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                                 context.startActivity(intent);
                             } else {

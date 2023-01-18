@@ -1,4 +1,4 @@
-package com.example.playercreator;
+package com.example.playercreator.DataBase;
 
 import android.os.AsyncTask;
 import com.example.playercreator.character.Player;
@@ -22,7 +22,7 @@ public class GetDataFromDB {
         this.nameList = nameList;
     }
 
-    protected void getJSON(final String urlWebService) {
+    public void getJSON(final String urlWebService) {
         class GetJSON extends AsyncTask<Void, Void, String> {
             @Override
             protected void onPreExecute() {
@@ -69,7 +69,7 @@ public class GetDataFromDB {
         }
         playerListToNameList();
     }
-    protected void playerListToNameList(){
+    public void playerListToNameList(){
         nameList.clear();
         for (int i = 0; i < playerList.size(); i++) {
             nameList.add(playerList.get(i).getPlayerName());

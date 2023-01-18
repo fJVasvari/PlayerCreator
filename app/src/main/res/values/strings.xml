@@ -28,6 +28,7 @@
     <string name="create_character">Create character</string>
     <string name="XP">XP</string>
     <string name="placeholder">placeholder</string>
+    <string name="back">Back to Main Menu</string>
 
 
 </resources>

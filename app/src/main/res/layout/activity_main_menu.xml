@@ -5,7 +5,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainMenu">
+        tools:context=".Main.MainMenu">
 
     <Button
             android:text="@string/play"
@@ -18,15 +18,15 @@
     <Button
             android:text="@string/characters"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/button2"
+            android:layout_height="wrap_content" android:id="@+id/charactersBtn"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toBottomOf="@+id/button"
             app:layout_constraintHorizontal_bias="0.500" app:layout_constraintVertical_bias="0.100"/>
     <Button
             android:text="@string/create_character"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" android:id="@+id/button3"
-            app:layout_constraintTop_toBottomOf="@+id/button2"
+            android:layout_height="wrap_content" android:id="@+id/createCharacterBtn"
+            app:layout_constraintTop_toBottomOf="@+id/charactersBtn"
             app:layout_constraintBottom_toBottomOf="parent" app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent" app:layout_constraintVertical_bias="0.100"
             app:layout_constraintHorizontal_bias="0.500"/>

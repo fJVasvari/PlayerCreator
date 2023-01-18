@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:tools="http://schemas.android.com/tools"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".character.StatPointManager$CreateCharacter">
+    <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="50dp"
+            android:text="@string/name_string"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.10" app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/class_string"
+            android:layout_marginStart="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.10" />
+
+    <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/gender_string"
+            android:layout_marginStart="50dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView3"
+            app:layout_constraintVertical_bias="0.100" />
+
+    <EditText
+            android:id="@+id/nameEditText"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:autofillHints=""
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="@string/name_string"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.743"
+            app:layout_constraintStart_toEndOf="@+id/textView2"
+            app:layout_constraintVertical_bias="0.08"
+            tools:ignore="DuplicateSpeakableTextCheck,LabelFor" app:layout_constraintTop_toTopOf="parent"/>
+    <Spinner
+            android:id="@+id/classSpinner"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.744"
+            app:layout_constraintStart_toEndOf="@+id/textView3"
+            app:layout_constraintTop_toBottomOf="@+id/nameEditText"
+            app:layout_constraintVertical_bias="0.049"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    <Spinner
+            android:id="@+id/genderSpinner"
+            android:layout_width="250dp"
+            android:layout_height="48dp"
+            android:minHeight="48dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.706"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toBottomOf="@+id/classSpinner"
+            app:layout_constraintVertical_bias="0.053"
+            tools:ignore="SpeakableTextPresentCheck" />
+
+    <Button
+            android:id="@+id/create_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/create_string"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.94"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.976"/>
+    <Button
+            android:id="@+id/healthMinus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@string/minusButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.080"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.100"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+
+    <Button
+            android:id="@+id/damageMinus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@string/minusButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.080"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.100"
+            app:layout_constraintTop_toBottomOf="@+id/healthMinus" />
+
+    <Button
+            android:id="@+id/defenseMinus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@string/minusButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.080"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.100"
+            app:layout_constraintTop_toBottomOf="@+id/damageMinus" />
+
+    <Button
+            android:id="@+id/healthPlus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@string/plusButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.100"
+            tools:ignore="DuplicateSpeakableTextCheck" />
+    <Button
+            android:id="@+id/damagePlus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@string/plusButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/healthPlus"
+            app:layout_constraintVertical_bias="0.100" />
+    <Button
+            android:id="@+id/defensePlus"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:text="@string/plusButton"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.9"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/damagePlus"
+            app:layout_constraintVertical_bias="0.100" />
+
+    <TextView
+            android:id="@+id/textviewHealth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/health"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/healthPlus"
+            app:layout_constraintStart_toEndOf="@+id/healthMinus"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:layout_constraintVertical_bias="0.120" />
+    <TextView
+            android:id="@+id/textviewDamage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/damage"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/damagePlus"
+            app:layout_constraintStart_toEndOf="@+id/damageMinus"
+            app:layout_constraintTop_toBottomOf="@+id/textviewHealth"
+            app:layout_constraintVertical_bias="0.200" />
+    <TextView
+            android:id="@+id/textviewDefense"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/defense"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/defensePlus"
+            app:layout_constraintStart_toEndOf="@+id/defenseMinus"
+            app:layout_constraintTop_toBottomOf="@+id/textviewDamage"
+            app:layout_constraintVertical_bias="0.200" />
+
+    <TextView
+            android:id="@+id/textviewStatPoint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/statPoint"
+            app:layout_constraintBottom_toTopOf="@+id/create_btn"
+            app:layout_constraintEnd_toStartOf="@+id/defensePlus"
+            app:layout_constraintStart_toEndOf="@+id/defenseMinus"
+            app:layout_constraintTop_toBottomOf="@+id/textviewDefense" />
+
+    <TextView
+            android:id="@+id/textviewStatPointText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/statPointText"
+            app:layout_constraintBottom_toTopOf="@+id/create_btn"
+            app:layout_constraintEnd_toStartOf="@+id/defensePlus"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toEndOf="@+id/defenseMinus"
+            app:layout_constraintTop_toBottomOf="@+id/defenseMinus" />
+    <Button
+            android:layout_width="50dp"
+            android:layout_height="50dp" android:id="@+id/backToMainBtn"
+            app:layout_constraintEnd_toStartOf="@+id/create_btn" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.077" app:layout_constraintVertical_bias="0.976"
+            app:icon="?attr/homeAsUpIndicator" tools:ignore="SpeakableTextPresentCheck"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.example.playercreator.character;
+package com.example.playercreator.DataBase;
 
 import android.content.Context;
 import android.os.Handler;
@@ -6,10 +6,11 @@ import android.os.Looper;
 import android.util.Log;
 import android.widget.Toast;
 
+import com.example.playercreator.character.Player;
 import com.vishnusivadas.advanced_httpurlconnection.PutData;
 
-public class CreatePlayer {
-    protected void putPlayerToDB(Player player, Context context){
+public class PutDataToDB {
+    public void putCharacterToDB(Player player, Context context){
         Handler handler = new Handler(Looper.getMainLooper());
         handler.post(new Runnable() {
             @Override

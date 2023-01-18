@@ -12,19 +12,19 @@
             android:theme="@style/Theme.PlayerCreator"
             android:usesCleartextTraffic="true">
         <activity
-                android:name=".character.MainActivity"
+                android:name=".Main.MainMenu"
                 android:exported="false"/>
         <activity
-                android:name=".MainMenu"
+                android:name=".character.StatPointManager$Characters"
                 android:exported="false"/>
         <activity
                 android:name=".user.register.Register"
                 android:exported="false"/>
         <activity
-                android:name=".user.login.Login"
+                android:name=".character.StatPointManager$CreateCharacter"
                 android:exported="false"/>
         <activity
-                android:name=".Characters"
+                android:name=".user.login.Login"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>
