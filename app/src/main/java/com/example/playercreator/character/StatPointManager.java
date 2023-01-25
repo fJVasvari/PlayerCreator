@@ -2,9 +2,11 @@ package com.example.playercreator.character;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
+import com.example.playercreator.DataBase.DeleteDataFromDB;
 import com.example.playercreator.DataBase.PutDataToDB;
 import com.example.playercreator.DataBase.GetDataFromDB;
 import com.example.playercreator.Main.MainMenu;
@@ -55,8 +57,8 @@ public class StatPointManager {
         ArrayList<Player> playerList = new ArrayList<>();
         ArrayList<String> playerNameList = new ArrayList<>();
         GetDataFromDB getDataFromDB = new GetDataFromDB(playerList,playerNameList);
-
-        Button backBtn;
+        DeleteDataFromDB deleteDataFromDB = new DeleteDataFromDB();
+        Button backBtn, deleteBtn;
         @Override
         protected void onCreate(Bundle savedInstanceState) {
             super.onCreate(savedInstanceState);
@@ -70,11 +72,12 @@ public class StatPointManager {
             damageText = findViewById(R.id.damageText);
             defenseText = findViewById(R.id.defenseText);
             backBtn = findViewById(R.id.backToMainBtn);
+            deleteBtn = findViewById(R.id.delete_btn);
 
             Player player = new Player("Default","Default","Default");
             playerList.add(player);
-            getDataFromDB.getJSON("http://10.0.14.100/playercreator/getdata.php");
-            getDataFromDB.playerListToNameList();
+            //getDataFromDB.getJSON("http://10.0.14.100/playercreator/getdata.php");
+            //getDataFromDB.playerListToNameList();
 
             ArrayAdapter<String> playerNameAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, playerNameList);
             characterSpinner.setAdapter(playerNameAdapter);
@@ -85,7 +88,7 @@ public class StatPointManager {
                     String spinnerValue = characterSpinner.getSelectedItem().toString();
 
                     for (int i = 0; i < playerList.size(); i++) {
-                        if(spinnerValue.equals(playerList.get(i).getPlayerName())){
+                        if (spinnerValue.equals(playerList.get(i).getPlayerName())) {
                             //Kiiratás
                             nameText.setText(String.valueOf(playerList.get(i).getPlayerName()));
                             classText.setText(String.valueOf(playerList.get(i).getPlayerClass()));
@@ -108,6 +111,17 @@ public class StatPointManager {
                     Intent intent = new Intent(getApplicationContext(), MainMenu.class);
                     startActivity(intent);
                     finish();
+                }
+            });
+            deleteBtn.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Player foundPlayer = playerList.get(characterSpinner.getSelectedItemPosition());
+                    Log.i("ID", String.valueOf(foundPlayer.getPlayerID()));
+                    deleteDataFromDB.deleteCharacterFromDB(foundPlayer, getApplicationContext());
+                    /*playerList.clear();
+                    getDataFromDB.getJSON("http://10.0.2.2/playercreator/getPlayers.php");
+                    getDataFromDB.playerListToNameList();*/
                 }
             });
         }

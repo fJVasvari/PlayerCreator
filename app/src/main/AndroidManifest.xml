@@ -15,7 +15,7 @@
                 android:name=".Main.MainMenu"
                 android:exported="false"/>
         <activity
-                android:name=".character.StatPointManager$Characters"
+                android:name=".user.login.Login"
                 android:exported="false"/>
         <activity
                 android:name=".user.register.Register"
@@ -24,7 +24,7 @@
                 android:name=".character.StatPointManager$CreateCharacter"
                 android:exported="false"/>
         <activity
-                android:name=".user.login.Login"
+                android:name=".character.StatPointManager$Characters"
                 android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN"/>

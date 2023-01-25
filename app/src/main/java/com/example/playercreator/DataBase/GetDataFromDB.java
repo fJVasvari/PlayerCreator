@@ -65,6 +65,7 @@ public class GetDataFromDB {
             player.setPlayerHealth(obj.getInt("health"));
             player.setPlayerDamage(obj.getInt("damage"));
             player.setPlayerDefense(obj.getInt("defense"));
+            player.setPlayerID(obj.getInt("id"));
             playerList.add(player);
         }
         playerListToNameList();
